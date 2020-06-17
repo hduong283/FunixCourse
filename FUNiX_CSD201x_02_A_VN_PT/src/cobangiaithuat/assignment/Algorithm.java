@@ -9,8 +9,21 @@ import java.io.ObjectOutputStream;
 import java.util.Scanner;
 
 public class Algorithm {
-	public void write_flie(float a[]) throws IOException {
+	public void write_file(float a[], String fileName){
 		
+		try {
+			FileOutputStream fileOut = new FileOutputStream(fileName);
+			ObjectOutputStream out = new ObjectOutputStream(fileOut);
+			out.writeObject(a);
+			System.out.println("");
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			System.out.println("error write to file : "+e);
+		}
+	}
+public void insert_data(String fileName) {
+		float[] a = {};
 		Scanner sc = new Scanner(System.in);
 		int n =0;
 		System.out.print("Input number of elements: ");
@@ -21,22 +34,19 @@ public class Algorithm {
 		System.out.println("Input elements: ");
 		for(int i=0;i<n;i++) {
 			a[i]=sc.nextInt();
-			System.out.print(a[i]+" ");
 		}
-		FileOutputStream fileOut = new FileOutputStream("input.txt");
-		ObjectOutputStream out = new ObjectOutputStream(fileOut);
-		out.writeObject(a);
+		write_file(a,fileName);
 		
 	}
 
 //2. Read data from file to array
 
-	public  float[] Read_file(float a[], int size) throws IOException, ClassNotFoundException {
-		FileInputStream fileInput = new FileInputStream("input.txt");
+	public  float[] Read_file( String filename) throws IOException, ClassNotFoundException {
+		FileInputStream fileInput = new FileInputStream(filename);
 		ObjectInputStream intput = new ObjectInputStream(fileInput);
-		a =   (float[]) intput.readObject();
-		size =a.length;
-		System.out.print("du lieu file input.txt: ");
+		float[] a =   (float[]) intput.readObject();
+		int size =a.length;
+		System.out.print("du lieu file :"+filename);
 		for(int i=0;i<size;i++) {
 			System.out.print(a[i]+" ");
 		}
@@ -47,6 +57,7 @@ public class Algorithm {
 //3. Sort by Bubble Sort
 
 	public  void BubbleSort(float a[]) {
+		System.out.println("Thuat toan Bubble Sort");
 		 float temp =0;
 		 boolean check = true;
 		 System.out.println();
@@ -76,6 +87,7 @@ public class Algorithm {
 //4. Sort bay Selection Sort
 
 	public  void SelectionSort(float a[]) {
+		System.out.println("Thuat toan Selection Sort");
 		float min;
 		int min_localtion;
 		
@@ -102,6 +114,7 @@ public class Algorithm {
 //5. Sort by Insertion Sort
 
 	public void InsertionSort(float a[]) {
+		System.out.println("Thuat toan Insertion Sort");
 		 float temp = 0;
 		 int j;
 		
@@ -132,6 +145,7 @@ public class Algorithm {
 //6. Serach by Linear Search algorith:
 
 	public  void Search(float a[], float value) {
+		System.out.println("tim kiem du lieu tuyen tinh");
 		boolean check =false;
 		for(int i=0;i< a.length;i++) {
 			if(value == a[i]) {
@@ -148,27 +162,22 @@ public class Algorithm {
 
 //7. Search by binary Search algorith
 
-	public  int binarySearch(float a[], int l, int r, float value) {
-		 if (r >= l) { 
-	            int mid = l + (r - l) / 2; 
-	  
-	            // If the element is present at the 
-	            // middle itself 
+	public  int binarySearch(float a[], int l, int size, float value) {
+		
+		 if (size >= l) { 
+	            int mid = l + (size - l) / 2; 
+	            // tra ve gia tri neu dung
 	            if (a[mid] == value) 
 	                return mid; 
-	  
-	            // If element is smaller than mid, then 
-	            // it can only be present in left subarray 
+	            //neu gia tri tai vi tri tim lon hon gia tri can tim thi tim trong mang ben trai mid
 	            if (a[mid] > value) 
 	                return binarySearch(a, l, mid - 1, value); 
 	  
-	            // Else the element can only be present 
-	            // in right subarray 
-	            return binarySearch(a, mid + 1, r, value); 
+	            // tim trong mang ben phai mib
+	            return binarySearch(a, mid + 1, size, value); 
 	        } 
 	  
-	        // We reach here when element is not present 
-	        // in array 
+	        //khon gtim thay gia tri
 	       return -1;
 	}
 }
