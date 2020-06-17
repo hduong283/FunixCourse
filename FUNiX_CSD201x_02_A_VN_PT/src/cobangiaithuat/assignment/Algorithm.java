@@ -131,13 +131,44 @@ public class Algorithm {
 
 //6. Serach by Linear Search algorith:
 
-	public static void Search(float a[], float value) {
-
+	public  void Search(float a[], float value) {
+		boolean check =false;
+		for(int i=0;i< a.length;i++) {
+			if(value == a[i]) {
+				System.out.println("Chi so la: "+i);
+				check =true;
+			}else {
+				
+			}
+		}
+		if(check == false) {
+			System.out.println("gia tri: "+value+" khong co trong mang");
+		}
 	}
 
 //7. Search by binary Search algorith
 
-	public static int binarySearch(float a[], int l, int r, float x) {
-		return 0;
+	public  int binarySearch(float a[], int l, int r, float value) {
+		 if (r >= l) { 
+	            int mid = l + (r - l) / 2; 
+	  
+	            // If the element is present at the 
+	            // middle itself 
+	            if (a[mid] == value) 
+	                return mid; 
+	  
+	            // If element is smaller than mid, then 
+	            // it can only be present in left subarray 
+	            if (a[mid] > value) 
+	                return binarySearch(a, l, mid - 1, value); 
+	  
+	            // Else the element can only be present 
+	            // in right subarray 
+	            return binarySearch(a, mid + 1, r, value); 
+	        } 
+	  
+	        // We reach here when element is not present 
+	        // in array 
+	       return -1;
 	}
 }

@@ -22,25 +22,42 @@ public class Main_Sort {
 			getMenu();
 			break;
 			case 3:System.out.println("Ban chon 3");
-			float[] b = a;
-			algorithm.BubbleSort(b);
+			a = algorithm.Read_file(a, a.length);
+			algorithm.BubbleSort(a);
 			getMenu();
 			break;
 			case 4:System.out.println("Ban chon 4");
-			float[] c = a;
-			algorithm.SelectionSort(c);
+			float[] c = a;a = algorithm.Read_file(a, a.length);
+			algorithm.SelectionSort(a);
 			getMenu();
 			break;
 			case 5:System.out.println("Ban chon 5");
-			float[] d = a;
-			algorithm.InsertionSort(d);
+			a = algorithm.Read_file(a, a.length);
+			algorithm.InsertionSort(a);
 			getMenu();
 			break;
-			case 6:System.out.println("Ban chon 6");getMenu();
+			case 6:System.out.println("Ban chon 6");
+			a = algorithm.Read_file(a, a.length);
+			System.out.println("Nhap gia tri can tim: ");
+			float value = in.nextFloat();
+			algorithm.Search(a,value );
+			getMenu();
 			break;
-			case 7:System.out.println("Ban chon 7");getMenu();
+			case 7:System.out.println("Ban chon 7");
+			algorithm.InsertionSort(a);
+			System.out.println("Nhap gia tri can tim: ");
+			float x = in.nextFloat();
+			int len = a.length;
+			int result = algorithm.binarySearch(a, 0, len-1, x);
+			if (result == -1) 
+	            System.out.println("Element not present"); 
+	        else
+	            System.out.println("Element found at index " + result); 
+			
+			getMenu();
 			break;
-			case 0:System.out.println("Thoat chuong trinh");check=false;
+			case 0:System.out.println("Thoat chuong trinh");
+			check=false;
 			break;
 			
 			}
