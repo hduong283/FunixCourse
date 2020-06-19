@@ -18,13 +18,13 @@ public class Main_Sort {
 			switch (in.nextInt()) {
 
 			case 1:
-				System.out.println("Ban chon 1");
+				System.out.println("Ban chon 1:");
 				fileNameInput = "input.txt";
 				algorithm.insert_data(fileNameInput);// nhap du lieu va ghi vao file
 				getMenu();
 				break;
 			case 2:
-				System.out.println("Ban chon 2");
+				System.out.println("Ban chon 2:");
 				fileNameInput = "input.txt";
 				a = algorithm.Read_file(fileNameInput);//doc du lieu ra man hinh
 				getMenu();
@@ -74,9 +74,9 @@ public class Main_Sort {
 				size = a.length;
 				int result = algorithm.binarySearch(a, 0, size - 1, value);
 				if (result == -1)
-					System.out.println("Element not present");
+					System.out.println("Khong ton tai gia tri nay trong mang");
 				else
-					System.out.println("Element found at index " + result);
+					System.out.println("gia tri co chi so index: " + result);
 
 				getMenu();
 				break;
@@ -84,7 +84,6 @@ public class Main_Sort {
 				check = false;
 				System.out.println("Ban da thoat chuong trinh");
 				break;
-
 			}
 
 		}
