@@ -1,6 +1,8 @@
 package cautrucdulieutuyentinh.assignment;
 
-public class Product {
+import java.io.Serializable;
+
+public class Product implements Serializable {
 	private int iD;
 	private String title;
 	private String quantity;

@@ -1,6 +1,11 @@
 package cautrucdulieutuyentinh.assignment;
 
-//Lớp OperationToProduct sẽ chứa các phương thức thức biểu diễn các yêu cầu chức năng của bài toán
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+
 public class OperationToProduct {
 	public int index(Product p, MyList<Product> list) {
 		return 0;
@@ -17,6 +22,7 @@ public class OperationToProduct {
 	}
 
 	public void getAllItemsFromFile(String fileName, MyStack<Product> stack) {
+
 	}
 
 	public void getAllItemsFromFile(String fileName, MyQueue<Product> queue) {
@@ -56,5 +62,28 @@ public class OperationToProduct {
 
 	// Delete element at position k
 	public void deletePosition(MyList<Product> list) {
+	}
+
+	public void write_file(Product data, String fileName) {
+
+		try {
+			FileOutputStream fileOut = new FileOutputStream(fileName);
+			ObjectOutputStream out = new ObjectOutputStream(fileOut);
+			out.writeObject(fileOut);
+			System.out.println("");
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			System.out.println("error write to file : " + e);
+		}
+	}
+
+	public Product[] Read_file(String filename) throws IOException, ClassNotFoundException {
+		FileInputStream fileInput = new FileInputStream(filename);
+		ObjectInputStream intput = new ObjectInputStream(fileInput);
+		Product a =  (Product)intput.readObject();
+		
+		System.out.println("");
+		return a;
 	}
 }

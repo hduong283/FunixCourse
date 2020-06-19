@@ -15,6 +15,7 @@ public class Main_Sort {
 		boolean check = true;
 		Algorithm algorithm = new Algorithm();
 		while (check) {
+			
 			switch (in.nextInt()) {
 
 			case 1:
@@ -84,9 +85,14 @@ public class Main_Sort {
 				check = false;
 				System.out.println("Ban da thoat chuong trinh");
 				break;
+			default: System.out.println("Ban chi nhap so tu 0-->7");System.out.println("Xin vui long nhap lai");
+			getMenu();
+			break;
 			}
+		
 
 		}
+		
 		in.close();
 	}
 

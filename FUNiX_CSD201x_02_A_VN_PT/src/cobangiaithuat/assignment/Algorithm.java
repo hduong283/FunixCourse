@@ -16,6 +16,7 @@ public class Algorithm {
 			ObjectOutputStream out = new ObjectOutputStream(fileOut);
 			out.writeObject(a);
 			System.out.println("");
+			out.close();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -35,6 +36,7 @@ public void insert_data(String fileName) {
 		for(int i=0;i<n;i++) {
 			a[i]=sc.nextInt();
 		}
+		sc.close();
 		write_file(a,fileName);
 		
 	}
@@ -51,6 +53,7 @@ public void insert_data(String fileName) {
 			System.out.print(a[i]+" ");
 		}
 		System.out.println("");
+		intput.close();
 		return a;
 	}
 
