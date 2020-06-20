@@ -1,19 +1,58 @@
 package cautrucdulieutuyentinh.assignment;
 
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
+import java.util.Scanner;
 
 public class OperationToProduct {
+	ReadWriteObject rwObj = new ReadWriteObject<Product>();
+
 	public int index(Product p, MyList<Product> list) {
 		return 0;
 	}
 
 	// Cread a product have:(ID, name, quantity, price) that input from keyboard
 	public Product createProduct() {
-		return null;
+		Product p = new Product();
+		Scanner sn = new Scanner(System.in);
+		boolean check = true;
+		
+		while (check) {
+			System.out.print("nhap iD:");
+			while (check) {
+				if (sn.hasNextInt()) {
+					p.setiD(sn.nextInt());
+					check = false;
+				} else {
+					check = true;
+					System.out.println("ban phai nhap lai ky tu bang so:");
+					System.out.print("nhap iD:");
+					sn.next();
+				}
+			}
+			
+			System.out.print("nhap Title:");
+			p.setTitle(sn.next());
+			System.out.print("nhap Quantity :");
+			p.setQuantity(sn.next());
+			System.out.print("nhap price :");
+			check = true;
+			while (check) {
+				if (sn.hasNextFloat()) {
+					p.setPrice(sn.nextFloat());
+					check = false;
+					System.out.println(p);
+				} else {
+					check = true;
+					System.out.println("ban phai nhap lai ky tu bang so:");
+					System.out.print("nhap price :");
+					sn.next();
+				}
+			}
+			System.out.println("Ban ket thuc vong lap");
+			//sn.close();
+			break;
+		}
+		
+		return p;
 	}
 
 	// Read all products from fike and save to Linked List ( Insert at tail of
@@ -64,26 +103,4 @@ public class OperationToProduct {
 	public void deletePosition(MyList<Product> list) {
 	}
 
-	public void write_file(Product data, String fileName) {
-
-		try {
-			FileOutputStream fileOut = new FileOutputStream(fileName);
-			ObjectOutputStream out = new ObjectOutputStream(fileOut);
-			out.writeObject(fileOut);
-			System.out.println("");
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-			System.out.println("error write to file : " + e);
-		}
-	}
-
-	public Product[] Read_file(String filename) throws IOException, ClassNotFoundException {
-		FileInputStream fileInput = new FileInputStream(filename);
-		ObjectInputStream intput = new ObjectInputStream(fileInput);
-		Product a =  (Product)intput.readObject();
-		
-		System.out.println("");
-		return a;
-	}
 }
