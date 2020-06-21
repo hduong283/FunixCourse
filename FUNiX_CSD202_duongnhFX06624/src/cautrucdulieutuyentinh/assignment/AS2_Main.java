@@ -3,40 +3,55 @@ package cautrucdulieutuyentinh.assignment;
 import java.io.IOException;
 import java.util.Scanner;
 
-
 public class AS2_Main {
 	public static void main(String[] args) throws ClassNotFoundException, IOException {
-		OperationToProduct operation = new OperationToProduct();
-		ReadWriteObject<Product> rw = new ReadWriteObject<>();
 		getMenu();
+		MyList<Product> productList = new MyList<Product>();// khoi tao mot linked list product
+		Node<Product> current;// tao mot pointer de duyet cac phan tu
+
+		OperationToProduct operation = new OperationToProduct();
+		ReadWriteObject<Product> rw = new ReadWriteObject<Product>();
+
 		Scanner in = new Scanner(System.in);
 		boolean check = true;
 		String fileName = null;
 		while (check) {
 			switch (in.nextInt()) {
 			case 1:
-				System.out.print("Ban chon 1: ");
-				System.out.println("Load data from file and display");
+				System.out.println("1.Load data from file and display ");
 				fileName = "data.txt";
-				Product[] b = rw.read(fileName);
-				for(Product d:b) {
-					System.out.println(d);
+				
+				productList= operation.getAllItemsFromFile(fileName, productList);
+				current = productList.head;
+				while (current != null) {
+					System.out.println(current.info);
+					current = current.next;
 				}
 				getMenu();
 				break;
 			case 2:
-				System.out.println("Ban chon 2");
+				System.out.println(" 2.Input & add to the end. ");
+				operation.addLast(productList);
+				current = productList.head;
+				while (current != null) {
+					System.out.println(current.info);
+					current = current.next;
+				}
 				getMenu();
 				break;
 			case 3:
-				System.out.println("Ban chon 3");
+				System.out.println("3.Display data :");
+				current = productList.head;
+				while (current != null) {
+					System.out.println(current.info);
+					current = current.next;
+				}
 				getMenu();
 				break;
 			case 4:
-				System.out.println("Ban chon 4");
+				System.out.println("4.Save product list to file :");
 				fileName = "data.txt";
-				Product[] a = { operation.createProduct() };
-				rw.write(a, fileName);
+				operation.writeAllItemsToFile(fileName, productList);
 				getMenu();
 				break;
 			case 5:

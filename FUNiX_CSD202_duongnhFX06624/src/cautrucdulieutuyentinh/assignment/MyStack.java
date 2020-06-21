@@ -1,18 +1,29 @@
 package cautrucdulieutuyentinh.assignment;
 
-public class MyStack<T> {
-	Node<T> head;
+import java.util.EmptyStackException;
 
-	public Node<T> getHead() {
-		return head;
+public class MyStack<E> {
+	Node<E> head;
+
+	public MyStack() {// khoi tao mot stack
+		head = null;
 	}
 
-	public void setHead(Node<T> head) {
-		this.head = head;
+	public boolean isEmpty() {
+		return (head == null);
 	}
-
-	public MyStack() {
-		super();
+	public void push(E x)
+    { 
+		head = new Node<E>(x,head);
+    }
+	public E  pop() {
+		if(isEmpty()) throw new EmptyStackException();
+		E x = head.info;
+		head = head.next;
+		return x;
 	}
-	
+	public E top() {
+		if(isEmpty()) throw new EmptyStackException();
+		return head.info;
+	}
 }
