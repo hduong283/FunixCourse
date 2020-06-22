@@ -27,10 +27,12 @@ public class AS2_Main {
 					System.out.println(current.info);
 					current = current.next;
 				}
+				System.out.println("chieu dai: "+productList.length());
 				getMenu();
 				break;
 			case 2:
 				System.out.println(" 2.Input & add to the end. ");
+				//operation.addLast(productList);
 				operation.addLast(productList);
 				current = productList.head;
 				while (current != null) {

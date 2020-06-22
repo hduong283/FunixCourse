@@ -13,14 +13,13 @@ public class MyList<E> {
 	}
 
 	public MyList() {
-		this.head = null;
-		this.tail = null;
+		head = tail =null;
 	}
 
 	public boolean isEmpty() {
-		
-		return (head == null && tail ==null);
+		return (head == null);
 	}
+	
 	
 
 	// Size of LinkedList
@@ -29,7 +28,6 @@ public class MyList<E> {
 		Node<E> current = head;// khoi tao mot node moi tai dau danh sach
 		int i = 0;
 		while (current != null) {
-
 			current = current.next;
 			i++;
 		}
@@ -38,19 +36,29 @@ public class MyList<E> {
 
 	// Insert to head of Linked List
 	public void insertToHead(E x) {
-		Node<E> New_node = new Node<E>(x);// khoi tao mot node moi co info
-		New_node.next = head;
-		head = New_node;// chuyen pointer ve dau node moi tao
+		Node<E> new_node = new Node<E>(x);
+		if(isEmpty()) {
+			head =  new_node;
+			tail = new_node;
+		}else {
+			new_node.next = head;
+			head = new_node;// chuyen pointer ve dau node moi tao
+		}
+		
 		
 	}
 	public void insertToTail(E x) {
-		Node<E> New_node = new Node<E>(x);// khoi tao mot node moi co info
+		Node<E> new_node = new Node<E>(x);// khoi tao mot node moi co info
 		if(isEmpty()) {
-			head=tail=New_node;
+			head=tail=new_node;
 			return;
 			}
-		tail.next = New_node;// chuyen pointer ve dau node moi tao
-		tail=New_node;
+		tail.next = new_node;
+		tail = new_node;
+		System.out.print("tail.info: ");
+		System.out.println(tail.info);
+		//tail.next = New_node;// chuyen pointer ve dau node moi tao
+		
 	}
 	
 
