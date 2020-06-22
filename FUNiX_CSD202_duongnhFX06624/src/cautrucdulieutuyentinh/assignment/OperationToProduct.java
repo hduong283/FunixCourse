@@ -103,11 +103,61 @@ public class OperationToProduct {
 		return list;
 	}
 
-	public void getAllItemsFromFile(String fileName, MyStack<Product> stack) {
-
+	public MyStack<Product> getAllItemsFromFile(String fileName, MyStack<Product> stack) {
+		stack = new MyStack<Product>();
+		try {
+			FileInputStream fileInput = new FileInputStream(fileName);
+			ObjectInputStream in = new ObjectInputStream(fileInput);
+			Product data = new Product();
+			boolean check=true;
+			while(check) {
+				data = (Product)in.readObject();
+				//System.out.println(data);
+				if(data != null)
+					stack.push(data);
+				else check =false;
+			}
+				
+				
+				
+			//System.out.println(data);
+			//System.out.println(list.head.info);
+		
+		} catch (ClassNotFoundException | IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			System.out.println("Loi doc file: "+e);
+		}
+		//System.out.println(in.available());
+	return stack;
 	}
 
-	public void getAllItemsFromFile(String fileName, MyQueue<Product> queue) {
+	public MyQueue<Product> getAllItemsFromFile(String fileName, MyQueue<Product> queue) {
+		queue = new MyQueue<Product>();
+		try {
+			FileInputStream fileInput = new FileInputStream(fileName);
+			ObjectInputStream in = new ObjectInputStream(fileInput);
+			Product data = new Product();
+			boolean check=true;
+			while(check) {
+				data = (Product)in.readObject();
+				//System.out.println(data);
+				if(data != null)
+					queue.enqueue(data);
+				else check =false;
+			}
+				
+				
+				
+			//System.out.println(data);
+			//System.out.println(list.head.info);
+		
+		} catch (ClassNotFoundException | IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			System.out.println("Loi doc file: "+e);
+		}return queue;
+		//System.out.println(in.available());
 	}
 
 	// Add a new product into tail of Linked List
@@ -187,15 +237,51 @@ public class OperationToProduct {
 	}
 
 	// Search first element by ID
-	public void searchByCode(MyList<Product> list) {
+	public Product searchByCode(MyList<Product> list, int iD) {
+		Node<Product> current = list.head;
+		while(current !=null) {
+			if(current.info.getiD() == iD) {
+				return current.info;
+			}
+			current = current.next;
+		}return null;
 	}
 
 	// Delete first element by ID (=ID)
-	public void deleteByCode(MyList<Product> list) {
+	public void deleteByCode(MyList<Product> list, int iD) {
+		Node<Product> current = list.head;
+		while(current !=null) {
+			if(current.info.getiD() == iD) {
+				list.deleteElement(current);
+			}
+			current = current.next;
+		}
 	}
 
 	// Sort by ID
 	public void sortByCode(MyList<Product> list) {
+		
+		   
+			Node<Product> pi,pj; 
+			int t;
+		   
+		    pi=list.head;
+		    while(pi!=null)
+		     {
+		    	pj=pi.next;
+		      while(pj!=null)
+		       {
+		    	  if(pj.info.getiD()<pi.info.getiD())
+		         {
+		    		  t=pi.info.getiD();
+		    		  pi.info=pj.info;
+		    		  pj.info.setiD(t);
+		         }
+		        pj=pj.next;
+		       }
+		      pi=pi.next;
+		     }
+		   
 	}
 
 	// Add new product to head of Linked list

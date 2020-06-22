@@ -7,6 +7,8 @@ public class AS2_Main {
 	public static void main(String[] args) throws ClassNotFoundException, IOException {
 		getMenu();
 		MyList<Product> productList = new MyList<Product>();// khoi tao mot linked list product
+		MyStack<Product> productStact = new MyStack<Product>();
+		MyQueue<Product> productQueue = new MyQueue<Product>();
 		Node<Product> current;// tao mot pointer de duyet cac phan tu
 
 		OperationToProduct operation = new OperationToProduct();
@@ -57,15 +59,23 @@ public class AS2_Main {
 				getMenu();
 				break;
 			case 5:
-				System.out.println("Ban chon 5");
+				System.out.println("5.Search by ID");
+				System.out.println(operation.searchByCode(productList,in.nextInt()));
 				getMenu();
 				break;
 			case 6:
-				System.out.println("Ban chon 6");
+				System.out.println("6.Delete by ID ");
+				operation.deleteByCode(productList,in.nextInt());
+				current = productList.head;
+				while (current != null) {
+					System.out.println(current.info);
+					current = current.next;
+				}
 				getMenu();
 				break;
 			case 7:
-				System.out.println("Ban chon 7");
+				System.out.println("7.Sort by ID :");
+				operation.sortByCode(productList);
 				getMenu();
 				break;
 			case 8:
@@ -73,11 +83,25 @@ public class AS2_Main {
 				getMenu();
 				break;
 			case 9:
-				System.out.println("Ban chon 9");
+				System.out.println("9.Load to stack and display");
+				fileName = "data.txt";
+				productStact= operation.getAllItemsFromFile(fileName, productStact);
+				current = productStact.head;
+				while (current != null) {
+					System.out.println(current.info);
+					current = current.next;
+				}
 				getMenu();
 				break;
 			case 10:
-				System.out.println("Ban chon 10");
+				System.out.println("10.Load to queue and display");
+				fileName = "data.txt";
+				productQueue= operation.getAllItemsFromFile(fileName, productQueue);
+				current = productQueue.head;
+				while (current != null) {
+					System.out.println(current.info);
+					current = current.next;
+				}
 				getMenu();
 				break;
 			case 0:

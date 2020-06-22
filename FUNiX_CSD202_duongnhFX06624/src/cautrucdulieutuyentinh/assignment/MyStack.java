@@ -26,4 +26,6 @@ public class MyStack<E> {
 		if(isEmpty()) throw new EmptyStackException();
 		return head.info;
 	}
+	
+	
 }

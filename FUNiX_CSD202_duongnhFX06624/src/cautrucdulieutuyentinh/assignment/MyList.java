@@ -87,7 +87,15 @@ public class MyList<E> {
 	}
 
 	// Delete element has value= x
-	public void deleteElement(E x) {
+	public void deleteElement(Node<E> x) {
+		Node<E> current = head;// khoi tao mot node moi co info
+		while(current != null) {
+			if(current.next == x) {
+				current.next = x.next;
+			}
+			current = current.next;
+		}
+		
 	}
 
 	// swap 2 elements
