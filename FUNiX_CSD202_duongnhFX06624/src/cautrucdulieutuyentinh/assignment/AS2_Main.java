@@ -7,12 +7,10 @@ public class AS2_Main {
 	public static void main(String[] args) throws ClassNotFoundException, IOException {
 		getMenu();
 		MyList<Product> productList = new MyList<Product>();// khoi tao mot linked list product
-		MyStack<Product> productStact = new MyStack<Product>();
+		MyStack<Product> productStack = new MyStack<Product>();
 		MyQueue<Product> productQueue = new MyQueue<Product>();
 		Node<Product> current;// tao mot pointer de duyet cac phan tu
-
 		OperationToProduct operation = new OperationToProduct();
-		ReadWriteObject<Product> rw = new ReadWriteObject<Product>();
 
 		Scanner in = new Scanner(System.in);
 		boolean check = true;
@@ -23,7 +21,7 @@ public class AS2_Main {
 				System.out.println("1.Load data from file and display ");
 				fileName = "data.txt";
 				
-				productList= operation.getAllItemsFromFile(fileName, productList);
+				productList= operation.getAllItemsFromFileToMyList(fileName, productList);
 				current = productList.head;
 				while (current != null) {
 					System.out.println(current.info);
@@ -76,17 +74,25 @@ public class AS2_Main {
 			case 7:
 				System.out.println("7.Sort by ID :");
 				operation.sortByCode(productList);
+				current = productList.head;
+				while (current != null) {
+					System.out.println(current.info);
+					current = current.next;
+				}
 				getMenu();
 				break;
 			case 8:
 				System.out.println("Ban chon 8");
+				current = productList.head;
+				System.out.println(current.info);
+				System.out.println(operation.Convert_Binary(current.info.getQuantity()));
 				getMenu();
 				break;
 			case 9:
 				System.out.println("9.Load to stack and display");
 				fileName = "data.txt";
-				productStact= operation.getAllItemsFromFile(fileName, productStact);
-				current = productStact.head;
+				productStack= operation.getAllItemsFromFileToMyStack(fileName, productStack);
+				current = productStack.head;
 				while (current != null) {
 					System.out.println(current.info);
 					current = current.next;
@@ -96,7 +102,7 @@ public class AS2_Main {
 			case 10:
 				System.out.println("10.Load to queue and display");
 				fileName = "data.txt";
-				productQueue= operation.getAllItemsFromFile(fileName, productQueue);
+				productQueue= operation.getAllItemsFromFileToMyQueue(fileName, productQueue);
 				current = productQueue.head;
 				while (current != null) {
 					System.out.println(current.info);
@@ -114,7 +120,7 @@ public class AS2_Main {
 				break;
 			}
 
-		}
+		}in.close();
 	}
 
 	static void getMenu() {

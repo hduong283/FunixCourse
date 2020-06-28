@@ -20,9 +20,8 @@ public class MyQueue<E> {
 	}
 	void enqueue(E x) {
 		if(isEmpty()) {
-			head =  new Node<E>(x);// ca header va tail deu tro ve cung vi tri ban dau
-			tail = new Node<E>(x);
-			
+			head =tail=  new Node<E>(x);// ca header va tail deu tro ve cung vi tri ban dau
+			head.next = tail;
 		}else {
 			tail.next=new Node<E>(x);//khi header dung o dau thi tail di chuyen ve phia sau
 			tail = tail.next;
