@@ -14,7 +14,7 @@ public static void main(String[] args) {
 	while (check) {
 		switch ((in.nextInt())) {
 		case 1:System.out.println("1. Insert a new Person & add to TreeList");
-		personImpl.createPersonToBST(treeList); 
+		personImpl.createPersonToBST(treeList);   
 		treeList.traverseInOrder();
 		getMenu();	break;
 		case 2:System.out.println("2. Inorder traverse");getMenu();	break;
