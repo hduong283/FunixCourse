@@ -24,15 +24,15 @@ public class TreeNode {
 		this.rightNode = null;
 		this.leftNode = null;
 	}
-	public TreeNode find(Person data) {
-		if(this.data == data) {
+	public TreeNode find(int iD) {
+		if(this.data.getiD() == iD) {
 			return this;
 		}
-		if(data.getiD() <  this.data.getiD() && leftNode != null) {
-			return this.leftNode.find(data);
+		if(iD <  this.data.getiD() && leftNode != null) {
+			return this.leftNode.find(iD);
 		}
-		if(data.getiD() > this.data.getiD() && rightNode != null) {
-			return this.rightNode.find(data);
+		if(iD > this.data.getiD() && rightNode != null) {
+			return this.rightNode.find(iD);
 		}
 		return null;
 	}
@@ -40,19 +40,18 @@ public class TreeNode {
 		return this.data == null;
 	}
 	public void insert(Person data) {
-		System.out.println(" this.data.getiD():"+ this.data.getiD());
-		System.out.println("data.getiD():"+data.getiD());
 		if(data.getiD() > this.data.getiD()) {
 			if(this.rightNode == null) {
 				this.rightNode = new TreeNode(data);
 			}else {
-				this.insert(data);
+				
+				this.rightNode.insert(data);
 			}
 		}else {
 			if(this.leftNode == null) {
 				this.leftNode = new TreeNode(data);
 			}else {
-				this.insert(data);
+				this.leftNode.insert(data);
 			}
 		}
 	}
@@ -63,4 +62,22 @@ public class TreeNode {
 		if (this.rightNode != null)
 			this.rightNode.traverseInOrder();
 	}
+	public boolean checkDataDuplicate(Person data) {
+		if(this.leftNode !=null ) {
+			if(this.leftNode.data.getiD() == data.getiD()) {
+				return true;
+			}else {
+				return this.leftNode.checkDataDuplicate(data);
+			}
+		}
+		if(this.rightNode !=null ) {
+			if(this.rightNode.data.getiD() == data.getiD()) {
+				return true;
+			}else {
+				return this.rightNode.checkDataDuplicate(data);
+			}
+		}
+		return false;
+	}
+	
 }

@@ -17,15 +17,27 @@ public static void main(String[] args) {
 		personImpl.createPersonToBST(treeList);   
 		treeList.traverseInOrder();
 		getMenu();	break;
-		case 2:System.out.println("2. Inorder traverse");getMenu();	break;
+		case 2:System.out.println("2. Inorder traverse");
+		treeList.traverseInOrder();
+		getMenu();	break;
 		case 3:System.out.println("3. Breadth-First Traversal traverse");getMenu();	break;
-		case 4:System.out.println("4. Search by Person ID");getMenu();	break;
+		case 4:System.out.println("4. Search by Person ID");
+		System.out.print("Xin vui long nhap iD tim kiem:");
+		int iDFind = in.nextInt();
+		if(treeList.find(iDFind) == null) 
+			System.out.println("khong tim thay iD:"+iDFind+"trong danh sach Tree List");
+		else {
+			System.out.println("Thong tin person :");
+			System.out.println(treeList.find(iDFind).getData());
+		}
+		
+		getMenu();	break;
 		case 5:System.out.println("5. Delete by Person ID");getMenu();	break;
 		case 6:System.out.println("6. Balancing Binary Search Tree");getMenu();	break;
 		case 7:System.out.println("7. DFS_Graph");getMenu();	break;
 		case 8:System.out.println("8. Dijkstra");getMenu();	break;
 		case 9:System.out.println("9. save to file");getMenu();	break;
-		case 0:System.out.println("1. Insert a new Person");check = false;	break;
+		case 0:System.out.println("Ban Da Thoat Chuong Trinh");check = false;	break;
 
 		default:
 			break;

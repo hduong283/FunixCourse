@@ -34,7 +34,12 @@ public class OperationToPerson {
 			break;
 		}
 		System.out.println("insert to tree list");
-		list.insert(p);
+		if(list.checkDuplicate(p)) {
+			System.out.println("da ton tai id....");
+		}else {
+			list.insert(p);
+		}
+		
 	}
 	// Wite all product of Linked List to file
 		public void writeAllItemsToFile(String fileName, MyBSTTree list) {

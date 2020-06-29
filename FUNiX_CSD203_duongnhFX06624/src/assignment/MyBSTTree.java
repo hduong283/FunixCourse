@@ -2,9 +2,9 @@ package assignment;
 
 public class MyBSTTree {
 	public TreeNode root;
-	public TreeNode find(Person data) {
+	public TreeNode find(int iD) {
 		if(root != null)
-			return root.find(data);
+			return root.find(iD);
 		return null;
 	}
 	public void insert(Person data) {
@@ -73,5 +73,15 @@ public class MyBSTTree {
 		if (this.root != null)
 			this.root.traverseInOrder();
 		System.out.println();
+	}
+	
+	public boolean checkDuplicate(Person data) {
+		if(this.root != null) {
+			if(data.getiD() == this.root.getData().getiD()) {
+				return true;
+			}else {
+				return this.root.checkDataDuplicate(data);
+			}
+		}return false;
 	}
 }
