@@ -5,7 +5,7 @@ public class Node<E> {
 	E info;//node.info
 	Node next;//node.next
 	
-	public E getInfo() {
+	public E getInfo() { 
 		return info;
 	}
 	public void setInfo(E info) {
