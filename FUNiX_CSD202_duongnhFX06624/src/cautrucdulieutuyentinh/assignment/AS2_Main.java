@@ -12,7 +12,7 @@ public class AS2_Main {
 		Node<Product> current;// tao mot pointer de duyet cac phan tu
 		OperationToProduct operation = new OperationToProduct();
 
-		Scanner in = new Scanner(System.in);
+		Scanner in = new Scanner(System.in); 
 		boolean check = true;
 		String fileName = null;
 		while (check) {
