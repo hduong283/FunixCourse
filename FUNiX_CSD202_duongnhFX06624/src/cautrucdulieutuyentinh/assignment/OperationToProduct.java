@@ -262,25 +262,19 @@ public class OperationToProduct {
 
 	// Sort by ID
 	public void sortByCode(MyList<Product> list) {
-		Node<Product> pi, pj;
+		Node<Product> pi=list.head, pj=list.head,prePi=null,prePj=null;
 		int t;
-		pi = list.head;
 		while (pi != null) {
-			pj = pi.next;
+			pj=pi.next;
 			while (pj != null) {
-				if (pj.info.getiD() < pi.info.getiD()) {
-					/*
-					 * t = pi.info.getiD(); pi.info = pj.info; pj.info.setiD(t);
-					 */
-					/*
-					 * pi.next = pj.next; pj.next = pi;
-					 */
-					pj.info = pi.info;
-					pi.info = (Product) pi.next.info;
-				}
-				pj = pj.next;
-			}
-			pi = pi.next;
+				if(pj.getInfo().getiD()<pi.getInfo().getiD()) {
+					Product temp = new Product();
+					temp = pj.getInfo();
+					pj.setInfo(pi.getInfo());//chi thay doi gia tri ma khong thay doi vi tri
+					pi.setInfo(temp);
+				}pj=pj.next;
+			}pi = pi.next;
+			
 		}
 	}
 
@@ -302,7 +296,6 @@ public class OperationToProduct {
 					sn.next();
 				}
 			}
-
 			System.out.print("nhap Title:");
 			p.setTitle(sn.next());
 			System.out.print("nhap Quantity :");

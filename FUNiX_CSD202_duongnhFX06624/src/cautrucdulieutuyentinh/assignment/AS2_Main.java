@@ -82,7 +82,7 @@ public class AS2_Main {
 				getMenu();
 				break;
 			case 8:
-				System.out.println("Ban chon 8");
+				System.out.println("8.Convert to Binary of quantity");
 				current = productList.head;
 				System.out.println(current.info);
 				System.out.println(operation.Convert_Binary(current.info.getQuantity()));

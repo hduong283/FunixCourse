@@ -1,5 +1,5 @@
 package cautrucdulieutuyentinh.assignment;
-//Lớp Node để quản lý thông tin và hành  của vi mỗi node trong danh sách
+
 public class Node<E> {
 	//gom 2 thanh phan
 	E info;//node.info

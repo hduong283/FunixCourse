@@ -42,17 +42,20 @@ public class TreeNode {
 	public void insert(Person data) {
 		System.out.println(" this.data.getiD():"+ this.data.getiD());
 		System.out.println("data.getiD():"+data.getiD());
-		if(data.getiD() > this.data.getiD()) {
+		
+		if(data.getiD() >= this.data.getiD()) {
 			if(this.rightNode == null) {
+				
 				this.rightNode = new TreeNode(data);
 			}else {
-				this.insert(data);
+				System.out.println("this.rightNode == "+this.rightNode.getData());
+				insert(data);
 			}
 		}else {
 			if(this.leftNode == null) {
 				this.leftNode = new TreeNode(data);
 			}else {
-				this.insert(data);
+				insert(data);
 			}
 		}
 	}

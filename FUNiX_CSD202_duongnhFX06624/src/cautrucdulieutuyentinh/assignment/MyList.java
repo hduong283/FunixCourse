@@ -82,9 +82,7 @@ public class MyList<E> {
 		return current;
 	}
 
-	// Delete element at tail of Linked List
-	public void deleteTail() {
-	}
+	
 
 	// Delete element has value= x
 	public void deleteElement(Node<E> x) {
@@ -100,6 +98,37 @@ public class MyList<E> {
 
 	// swap 2 elements
 	public void swap(Node<E> x1, Node<E> x2) {
+		Node<E> preNode1=null, preNode2=null,node1=head,node2=head;
+		if(head==null|| x1==x2) {//khong co du lieu
+			return;
+		}
+		//dung node1 de tim kiem gia tri x1
+		while(node1 != null && node1 !=x1) {
+			preNode1 = node1;
+			node1 = node1.next;
+		}
+		//dung node2 de tim kiem gia tri x2
+		while(node2 != null && node2 !=x2) {
+			preNode2 = node2;
+			node2 = node2.next;
+		}
+		if(node1 != null && node2 != null) {// ton tai x1 va x2
+			if(preNode1!=null)
+			preNode1.next = node2;
+			else
+				head=node2;
+			if(preNode2!=null)
+			preNode2.next = node1;
+			else
+				head=node1;
+			Node<E> nodeTemp = node1.next;
+			node1.next = node2.next;
+			node2.next = nodeTemp;
+		}else {
+			System.out.println("not found");
+		}
+		
+		
 	}
 
 	// Delete all Linked List
